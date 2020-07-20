@@ -1,6 +1,6 @@
 package com.luizleiteoliveira;
 
-import com.luizleiteoliveira.entity.User;
+import com.luizleiteoliveira.entity.client.UserClient;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -14,5 +14,5 @@ public interface Client {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/users/{userId}")
-    User getUsers(@PathParam("userId") int userId);
+    UserClient getUsers(@PathParam("userId") int userId);
 }

@@ -1,6 +1,6 @@
 package com.luizleiteoliveira;
 
-import com.luizleiteoliveira.entity.User;
+import com.luizleiteoliveira.entity.client.UserClient;
 import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -17,7 +17,7 @@ public class ExampleResource {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public User hello() {
+    public UserClient hello() {
         return client.getUsers(1);
     }
 }

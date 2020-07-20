@@ -1,19 +1,19 @@
-package com.luizleiteoliveira.entity;
+package com.luizleiteoliveira.entity.client;
 
 import java.util.List;
 
-public class User {
+public class UserClient {
 
     private Long id;
     private String nomeCompleto;
     private int anoNascimento;
     private String estadoCivil;
     private int numeroDeIrmaos;
-    private Cidade cidade;
-    private Empresa empresa;
-    private List<Hobbie> hobbies;
+    private Long cidade;
+    private Long empresa;
+    private List<Long> hobbies;
 
-    public User() {
+    public UserClient() {
     }
 
     public Long getId() {
@@ -56,27 +56,27 @@ public class User {
         this.numeroDeIrmaos = numeroDeIrmaos;
     }
 
-    public Cidade getCidade() {
+    public Long getCidade() {
         return cidade;
     }
 
-    public void setCidade(Cidade cidade) {
+    public void setCidade(Long cidade) {
         this.cidade = cidade;
     }
 
-    public Empresa getEmpresa() {
+    public Long getEmpresa() {
         return empresa;
     }
 
-    public void setEmpresa(Empresa empresa) {
+    public void setEmpresa(Long empresa) {
         this.empresa = empresa;
     }
 
-    public List<Hobbie> getHobbies() {
+    public List<Long> getHobbies() {
         return hobbies;
     }
 
-    public void setHobbies(List<Hobbie> hobbies) {
+    public void setHobbies(List<Long> hobbies) {
         this.hobbies = hobbies;
     }
 }
