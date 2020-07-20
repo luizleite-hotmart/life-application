@@ -2,8 +2,11 @@ package com.luizleiteoliveira.graphql;
 
 import com.luizleiteoliveira.Client;
 import com.luizleiteoliveira.entity.Empresa;
+import com.luizleiteoliveira.entity.Produto;
+import com.luizleiteoliveira.entity.Tech;
 import com.luizleiteoliveira.entity.User;
 import com.luizleiteoliveira.entity.client.EmpresaClient;
+import com.luizleiteoliveira.entity.client.ProdutoClient;
 import com.luizleiteoliveira.entity.client.UserClient;
 import graphql.schema.DataFetcher;
 import graphql.schema.DataFetchingEnvironment;
@@ -29,7 +32,23 @@ public class Fetcher implements DataFetcher<User> {
     private Empresa getEmpresaUsuario(int id) {
         EmpresaClient empresaClient = client.getCompanies(id);
         Empresa empresa = new Empresa(empresaClient);
+        for (Long produtoId: empresaClient.getProdutos()) {
+            empresa.getProdutos().add(getProducto(produtoId.intValue()));
+        }
         return empresa;
+    }
+
+    private Produto getProducto(int id) {
+        ProdutoClient produtoClient = client.getProducts(id);
+        Produto produto = new Produto(produtoClient);
+        for (Long techId: produtoClient.getTecnologias()) {
+            produto.getTecnologias().add(getTech(techId.intValue()));
+        }
+        return produto;
+    }
+
+    private Tech getTech(int id) {
+        return client.getTechnologies(id);
     }
 
     @Override
