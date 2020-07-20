@@ -1,0 +1,46 @@
+type User {
+  id: String
+  nomeCompleto: String
+  anoNascimento: Int
+  estadoCivil: String
+  numeroDeIrmaos: Int
+  cidade: Cidade
+  empresa: Empresa
+  hobbies: [Hobbie]
+}
+
+type Cidade {
+    id: String
+    nome: String
+    estado: String
+
+}
+
+type Empresa {
+    id: String
+    nome: String
+    produtos: [Produto]
+    cidade: Cidade
+}
+
+type Produto {
+    id: String
+    nome: String
+    tecnologias: [Tech]
+}
+
+type Tech {
+    id: String
+    nome: String
+    anoCriacao: Int
+}
+
+type Hobbie {
+    id: String
+    nome: String
+    informacaoAdicional: String
+}
+
+type Query {
+  getUser(userId: Int) : User
+}

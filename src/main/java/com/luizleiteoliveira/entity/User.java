@@ -1,5 +1,9 @@
 package com.luizleiteoliveira.entity;
 
+import com.luizleiteoliveira.entity.client.UserClient;
+
+import java.util.List;
+
 public class User {
 
     private Long id;
@@ -9,7 +13,7 @@ public class User {
     private int numeroDeIrmaos;
     private Cidade cidade;
     private Empresa empresa;
-    private Hobbie hobbies;
+    private List<Hobbie> hobbies;
 
     public User() {
     }
@@ -70,11 +74,23 @@ public class User {
         this.empresa = empresa;
     }
 
-    public Hobbie getHobbies() {
+    public List<Hobbie> getHobbies() {
         return hobbies;
     }
 
-    public void setHobbies(Hobbie hobbies) {
+    public void setHobbies(List<Hobbie> hobbies) {
         this.hobbies = hobbies;
+    }
+
+    public User(UserClient userClient) {
+        this.anoNascimento = userClient.getAnoNascimento();
+        this.cidade = new Cidade();
+        this.cidade.setId(userClient.getCidade());
+        this.estadoCivil = userClient.getEstadoCivil();
+        this.empresa = new Empresa(userClient.getEmpresa());
+        this.numeroDeIrmaos = userClient.getNumeroDeIrmaos();
+        for (Long hobbieId: userClient.getHobbies()) {
+            this.getHobbies().add(new Hobbie(hobbieId));
+        }
     }
 }

@@ -12,6 +12,10 @@ public class Empresa {
     public Empresa() {
     }
 
+    public Empresa(Long id) {
+        this.id = id;
+    }
+
     public Long getId() {
         return id;
     }

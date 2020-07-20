@@ -2,6 +2,7 @@ package com.luizleiteoliveira.graphql;
 
 import com.luizleiteoliveira.Client;
 import com.luizleiteoliveira.entity.User;
+import com.luizleiteoliveira.entity.client.UserClient;
 import graphql.schema.DataFetcher;
 import graphql.schema.DataFetchingEnvironment;
 
@@ -17,8 +18,8 @@ public class Fetcher implements DataFetcher<User> {
 
 
     private User getUser(int id) {
-
-        return new User();
+        UserClient userClient = client.getUsers(id);
+        return new User(userClient);
     }
 
     @Override

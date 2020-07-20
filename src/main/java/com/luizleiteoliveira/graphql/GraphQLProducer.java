@@ -49,7 +49,7 @@ public class GraphQLProducer {
 
         return RuntimeWiring.newRuntimeWiring()
             .type("Query",
-                builder -> builder.dataFetcher("allUsers", new Fetcher(userClient)))
+                builder -> builder.dataFetcher("getUser", new Fetcher(userClient)))
             .build();
     }
 
