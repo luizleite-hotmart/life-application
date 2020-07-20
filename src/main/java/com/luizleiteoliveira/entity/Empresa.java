@@ -1,12 +1,15 @@
 package com.luizleiteoliveira.entity;
 
+import com.luizleiteoliveira.entity.client.EmpresaClient;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class Empresa {
 
     private Long id;
     private String nome;
-    private List<Produto> produtos;
+    private List<Produto> produtos = new ArrayList<>();
     private Cidade cidade;
 
     public Empresa() {
@@ -47,4 +50,10 @@ public class Empresa {
     public void setCidade(Cidade cidade) {
         this.cidade = cidade;
     }
+
+    public Empresa(EmpresaClient empresaClient) {
+        this.nome = empresaClient.getNome();
+        this.id = empresaClient.getId();
+    }
+
 }

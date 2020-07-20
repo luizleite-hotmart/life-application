@@ -2,6 +2,7 @@ package com.luizleiteoliveira.entity;
 
 import com.luizleiteoliveira.entity.client.UserClient;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class User {
@@ -13,7 +14,7 @@ public class User {
     private int numeroDeIrmaos;
     private Cidade cidade;
     private Empresa empresa;
-    private List<Hobbie> hobbies;
+    private List<Hobbie> hobbies = new ArrayList<>();
 
     public User() {
     }
@@ -84,13 +85,8 @@ public class User {
 
     public User(UserClient userClient) {
         this.anoNascimento = userClient.getAnoNascimento();
-        this.cidade = new Cidade();
-        this.cidade.setId(userClient.getCidade());
         this.estadoCivil = userClient.getEstadoCivil();
         this.empresa = new Empresa(userClient.getEmpresa());
         this.numeroDeIrmaos = userClient.getNumeroDeIrmaos();
-        for (Long hobbieId: userClient.getHobbies()) {
-            this.getHobbies().add(new Hobbie(hobbieId));
-        }
     }
 }

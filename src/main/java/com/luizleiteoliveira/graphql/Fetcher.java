@@ -1,7 +1,9 @@
 package com.luizleiteoliveira.graphql;
 
 import com.luizleiteoliveira.Client;
+import com.luizleiteoliveira.entity.Empresa;
 import com.luizleiteoliveira.entity.User;
+import com.luizleiteoliveira.entity.client.EmpresaClient;
 import com.luizleiteoliveira.entity.client.UserClient;
 import graphql.schema.DataFetcher;
 import graphql.schema.DataFetchingEnvironment;
@@ -19,7 +21,15 @@ public class Fetcher implements DataFetcher<User> {
 
     private User getUser(int id) {
         UserClient userClient = client.getUsers(id);
-        return new User(userClient);
+        User user = new User(userClient);
+        user.setEmpresa(getEmpresaUsuario(userClient.getEmpresa().intValue()));
+        return user;
+    }
+
+    private Empresa getEmpresaUsuario(int id) {
+        EmpresaClient empresaClient = client.getCompanies(id);
+        Empresa empresa = new Empresa(empresaClient);
+        return empresa;
     }
 
     @Override

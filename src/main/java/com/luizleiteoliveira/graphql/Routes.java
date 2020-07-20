@@ -21,6 +21,8 @@ public class Routes {
 
         router.route("/graphql")
             .handler(new GraphQLHandlerImpl(graphQL, new GraphQLHandlerOptions()));
+        router.route("/graphiql/*").handler(
+                GraphiQLHandler.create(new GraphiQLHandlerOptions().setEnabled(true)));
     }
 
 }
